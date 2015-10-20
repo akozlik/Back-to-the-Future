@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D742EAC11BD5E87D004455D3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EAC01BD5E87D004455D3 /* Character.swift */; settings = {ASSET_TAGS = (); }; };
 		D7A9D5921BD5D37E004F8C82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D5911BD5D37E004F8C82 /* AppDelegate.swift */; };
 		D7A9D5951BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D5931BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld */; };
 		D7A9D5971BD5D37E004F8C82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D5961BD5D37E004F8C82 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D742EAC01BD5E87D004455D3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D7A9D58C1BD5D37D004F8C82 /* BackToTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A9D5901BD5D37E004F8C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7A9D5911BD5D37E004F8C82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		D7A9D58E1BD5D37D004F8C82 /* BackToTheFuture */ = {
 			isa = PBXGroup;
 			children = (
+				D742EAC01BD5E87D004455D3 /* Character.swift */,
 				D7A9D5911BD5D37E004F8C82 /* AppDelegate.swift */,
 				D7A9D5961BD5D37E004F8C82 /* ViewController.swift */,
 				D7A9D5981BD5D37E004F8C82 /* Main.storyboard */,
@@ -159,11 +162,13 @@
 		D7A9D5841BD5D37D004F8C82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Andrew Kozlik";
 				TargetAttributes = {
 					D7A9D58B1BD5D37D004F8C82 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5L78R6E9LV;
 					};
 					D7A9D5A31BD5D37E004F8C82 = {
 						CreatedOnToolsVersion = 6.4;
@@ -218,6 +223,7 @@
 				D7A9D5971BD5D37E004F8C82 /* ViewController.swift in Sources */,
 				D7A9D5951BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld in Sources */,
 				D7A9D5921BD5D37E004F8C82 /* AppDelegate.swift in Sources */,
+				D742EAC11BD5E87D004455D3 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +350,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BackToTheFuture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -354,9 +364,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BackToTheFuture/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -413,6 +427,7 @@
 				D7A9D5B01BD5D37E004F8C82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7A9D5B11BD5D37E004F8C82 /* Build configuration list for PBXNativeTarget "BackToTheFutureTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +436,7 @@
 				D7A9D5B31BD5D37E004F8C82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
