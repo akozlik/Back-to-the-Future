@@ -34,9 +34,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         // Set up a few characters
-        let marty = Character.init(characterName: "Marty McFly", actorName: "Michael J Fox", actorHeadshotName: "michael")
-        let doc = Character.init(characterName: "Doc Brown", actorName: "Christopher Lloyd", actorHeadshotName: "christopher")
-        let lorraine = Character.init(characterName: "Lorraine Baines", actorName: "Lea Thompson", actorHeadshotName: "lea")
+        let marty = Character.init(characterName: "Marty McFly", actorName: "Michael J Fox", actorHeadshotName: "michael", quote : "Are you telling me that you built a time machine... out of a DeLorean?")
+        let doc = Character.init(characterName: "Doc Brown", actorName: "Christopher Lloyd", actorHeadshotName: "christopher", quote: "Where we're going we don't need roads!")
+        let lorraine = Character.init(characterName: "Lorraine Baines", actorName: "Lea Thompson", actorHeadshotName: "lea", quote: "I'm going with Calvin Klein, okay?")
         
         characters?.append(marty)
         characters?.append(doc)
@@ -81,7 +81,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let detailVC = storyboard?.instantiateViewControllerWithIdentifier("CharacterDetailViewController") as? CharacterDetailViewController
         
         detailVC?.character = character
-        detailVC?.preferredContentSize = CGSize(width: 0, height: 300)
+        detailVC?.preferredContentSize = CGSize(width: 0, height: 280)
 
         return detailVC
     }

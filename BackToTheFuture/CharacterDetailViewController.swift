@@ -30,6 +30,16 @@ class CharacterDetailViewController : UIViewController {
         actorNameLabel?.text = character.actorName
     }
     
+    // MARK: Preview Action Items
+    
+    override func previewActionItems() -> [UIPreviewActionItem] {
+        let alertAction = UIPreviewAction(title: "Say a Quote!", style: .Default) { (action, viewController) -> Void in
+            
+        };
+        
+        return [alertAction]
+    }
+    
     // Memory methods
     override func didReceiveMemoryWarning() {
         

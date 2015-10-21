@@ -14,8 +14,9 @@ class Character: NSObject {
     var actorName : String?
     var actorHeadshot : UIImage?
     var actorHeadshotName : String?
+    var quote : String?
     
-    init(characterName : String, actorName : String, actorHeadshotName : String?) {
+    init(characterName : String, actorName : String, actorHeadshotName : String?, quote : String?) {
         super.init();
         
         self.characterName = characterName
