@@ -22,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         self.title = "BTTF"
         
         if (characters == nil) {
@@ -41,10 +41,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // Loop through each character and create shortcuts
         for character in characters! {
-            let c = character as! Character
             let item = UIMutableApplicationShortcutItem(
                 type: "com.codefortravel.backtothefuture.character",
-                localizedTitle: c.characterName!,
+                localizedTitle: character.characterName!,
                 localizedSubtitle: "Tap for more details",
 //                icon: nil, // No icon
 //                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
