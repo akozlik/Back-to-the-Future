@@ -29,19 +29,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self.title = "BTTF"
         
-        if (characters == nil) {
-            characters = [Character]()
-        }
+        loadCharacters()
         
-        // Set up a few characters
-        let marty = Character.init(characterName: "Marty McFly", actorName: "Michael J Fox", actorHeadshotName: "michael", quote : "Are you telling me that you built a time machine... out of a DeLorean?")
-        let doc = Character.init(characterName: "Doc Brown", actorName: "Christopher Lloyd", actorHeadshotName: "christopher", quote: "Where we're going we don't need roads!")
-        let lorraine = Character.init(characterName: "Lorraine Baines", actorName: "Lea Thompson", actorHeadshotName: "lea", quote: "I'm going with Calvin Klein, okay?")
-        
-        characters?.append(marty)
-        characters?.append(doc)
-        characters?.append(lorraine)
-        
+        loadShortcutItems()
+    }
+    
+    func loadShortcutItems() {
         var shortcutItems = [UIMutableApplicationShortcutItem]()
         
         // Loop through each character and create shortcuts
@@ -50,16 +43,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 type: "com.codefortravel.backtothefuture.character",
                 localizedTitle: character.characterName!,
                 localizedSubtitle: "Tap for more details",
-//                icon: nil, // No icon
-//                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
+                //                icon: nil, // No icon
+                //                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
                 icon: UIApplicationShortcutIcon(type: .Add), // Icon with a UIApplicationShortcutIconType
-
+                
                 userInfo: ["characterName" : character.characterName!]
             )
             shortcutItems.append(item)
         }
         
         UIApplication.sharedApplication().shortcutItems = shortcutItems
+    }
+    
+    func loadCharacters() {
+        if (characters == nil) {
+            characters = [Character]()
+        }
+        
+        // Set up a few characters
+        let marty = Character.init(
+            characterName: "Marty McFly",
+            actorName: "Michael J Fox",
+            actorHeadshotName: "michael",
+            quote : "Are you telling me that you built a time machine... out of a DeLorean?")
+        
+        let doc = Character.init(
+            characterName: "Doc Brown",
+            actorName: "Christopher Lloyd",
+            actorHeadshotName: "christopher",
+            quote: "Where we're going we don't need roads!")
+        
+        let lorraine = Character.init(
+            characterName: "Lorraine Baines",
+            actorName: "Lea Thompson",
+            actorHeadshotName: "lea",
+            quote: "I'm going with Calvin Klein, okay?")
+        
+        characters?.append(marty)
+        characters?.append(doc)
+        characters?.append(lorraine)
     }
     
     func switchTimeTravelButtonLabel() {
