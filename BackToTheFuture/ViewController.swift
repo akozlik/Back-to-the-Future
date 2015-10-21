@@ -16,34 +16,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let message2015 = "Time Travel to 2015"
     let message1985 = "Time Travel to 1985"
     
-    var characters : NSMutableArray?
+    let kCharacterDetailSegue = "characterDetailSegue"
+    
+    var characters : [Character]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        self.title = "BTTF"
         
         if (characters == nil) {
-            characters = NSMutableArray();
+            characters = [Character]()
         }
         
         let marty = Character.init(characterName: "Marty McFly", actorName: "Michael J Fox", actorHeadshotName: "michael")
         let doc = Character.init(characterName: "Doc Brown", actorName: "Christopher Lloyd", actorHeadshotName: "christopher")
         let lorraine = Character.init(characterName: "Lorraine Baines", actorName: "Lea Thompson", actorHeadshotName: "lea")
         
-        characters?.addObjectsFromArray([marty, doc, lorraine])
+        characters?.append(marty)
+        characters?.append(doc)
+        characters?.append(lorraine)
         
         var shortcutItems = [UIMutableApplicationShortcutItem]()
         
+        // Loop through each character and create shortcuts
         for character in characters! {
             let c = character as! Character
             let item = UIMutableApplicationShortcutItem(
                 type: "com.codefortravel.backtothefuture.character",
                 localizedTitle: c.characterName!,
                 localizedSubtitle: "Tap for more details",
-//                icon: nil,
-//                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"),
-                icon: UIApplicationShortcutIcon(type: .Add),
+//                icon: nil, // No icon
+//                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
+                icon: UIApplicationShortcutIcon(type: .Add), // Icon with a UIApplicationShortcutIconType
 
-                userInfo: nil
+                userInfo: ["characterName" : character.characterName!]
             )
             shortcutItems.append(item)
         }
@@ -66,7 +73,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier")
         
         if (cell != nil) {
-            let character : Character = (characters?.objectAtIndex(indexPath.row))! as! Character
+//            let character : Character = (characters?.[indexPath.row])! as! Character
+            let character : Character = characters[indexPath.row]
             
             cell?.textLabel?.text = character.characterName
             cell?.detailTextLabel?.text = character.actorName
@@ -79,6 +87,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell!
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.performSegueWithIdentifier(kCharacterDetailSegue, sender: self)
+    }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
@@ -89,6 +101,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters!.count
+    }
+    
+    // MARK: Segue Methods
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == kCharacterDetailSegue) {
+            var detailVC = segue.destinationViewController as! CharacterDetailViewController
+            
+            let indexPath = tableView?.indexPathForSelectedRow
+            let row = indexPath?.row
+            detailVC.character = characters[row!]
+        }
+    }
+    
+    // MARK: 3D Touch check
+    func isForceTouchAvailable() -> Bool {
+        
+        var isForceTouchAvailable = false;
+        
+        if (self.traitCollection.respondsToSelector("forceTouchCapability")) {
+            isForceTouchAvailable = self.traitCollection.forceTouchCapability == UIForceTouchCapability.Available
+        }
+        
+        return isForceTouchAvailable
     }
     
     // MARK: Memory Warning Method

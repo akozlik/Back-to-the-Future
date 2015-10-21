@@ -43,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
     }
 
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        
+        if (shortcutItem.type == "com.codefortravel.backtothefuture.fluxcapacitor") {
+            NSLog("Inserting flux capacitor!")
+        } else if (shortcutItem.type == "com.codefortravel.backtothefuture.character") {
+            NSLog("%@", shortcutItem.userInfo!)
+        }
+    }
+
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {
