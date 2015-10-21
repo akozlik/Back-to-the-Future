@@ -21,7 +21,7 @@ class Character: NSObject {
         self.characterName = characterName
         self.actorName = actorName
         
-        if (actorHeadshot != nil) {
+        if (actorHeadshotName != nil) {
             self.actorHeadshot = UIImage(named: actorHeadshotName!)
             self.actorHeadshotName = actorHeadshotName
         }

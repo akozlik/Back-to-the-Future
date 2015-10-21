@@ -39,17 +39,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 type: "com.codefortravel.backtothefuture.character",
                 localizedTitle: c.characterName!,
                 localizedSubtitle: "Tap for more details",
-                icon: UIApplicationShortcutIcon(templateImageName: c.actorHeadshotName!),
+//                icon: nil,
+//                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"),
+                icon: UIApplicationShortcutIcon(type: .Add),
+
                 userInfo: nil
             )
             shortcutItems.append(item)
         }
         
         UIApplication.sharedApplication().shortcutItems = shortcutItems
-
-        NSLog("Characters: %@", characters!);
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     // MARK: IBAction Methods
@@ -71,7 +70,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             cell?.textLabel?.text = character.characterName
             cell?.detailTextLabel?.text = character.actorName
-            cell?.imageView?.image = character.actorHeadshot
+            
+            if (character.actorHeadshotName != nil) {
+                cell?.imageView?.image = UIImage(named:character.actorHeadshotName!)   
+            }
         }
         
         return cell!

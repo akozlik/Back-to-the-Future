@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70165561BD7278100301942 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70165551BD7278100301942 /* CharacterDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D742EAC11BD5E87D004455D3 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = D742EAC01BD5E87D004455D3 /* Character.swift */; settings = {ASSET_TAGS = (); }; };
 		D7A9D5921BD5D37E004F8C82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D5911BD5D37E004F8C82 /* AppDelegate.swift */; };
 		D7A9D5951BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7A9D5931BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D70165551BD7278100301942 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		D742EAC01BD5E87D004455D3 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		D7A9D58C1BD5D37D004F8C82 /* BackToTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackToTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A9D5901BD5D37E004F8C82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +62,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D70165521BD7275E00301942 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D742EAC01BD5E87D004455D3 /* Character.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		D70165531BD7276600301942 /* Main VC */ = {
+			isa = PBXGroup;
+			children = (
+				D7A9D5961BD5D37E004F8C82 /* ViewController.swift */,
+			);
+			name = "Main VC";
+			sourceTree = "<group>";
+		};
+		D70165541BD7276F00301942 /* Character Detail */ = {
+			isa = PBXGroup;
+			children = (
+				D70165551BD7278100301942 /* CharacterDetailViewController.swift */,
+			);
+			name = "Character Detail";
+			sourceTree = "<group>";
+		};
 		D7A9D5831BD5D37D004F8C82 = {
 			isa = PBXGroup;
 			children = (
@@ -81,9 +107,10 @@
 		D7A9D58E1BD5D37D004F8C82 /* BackToTheFuture */ = {
 			isa = PBXGroup;
 			children = (
-				D742EAC01BD5E87D004455D3 /* Character.swift */,
+				D70165541BD7276F00301942 /* Character Detail */,
+				D70165531BD7276600301942 /* Main VC */,
+				D70165521BD7275E00301942 /* Models */,
 				D7A9D5911BD5D37E004F8C82 /* AppDelegate.swift */,
-				D7A9D5961BD5D37E004F8C82 /* ViewController.swift */,
 				D7A9D5981BD5D37E004F8C82 /* Main.storyboard */,
 				D7A9D59B1BD5D37E004F8C82 /* Images.xcassets */,
 				D7A9D59D1BD5D37E004F8C82 /* LaunchScreen.xib */,
@@ -222,6 +249,7 @@
 			files = (
 				D7A9D5971BD5D37E004F8C82 /* ViewController.swift in Sources */,
 				D7A9D5951BD5D37E004F8C82 /* BackToTheFuture.xcdatamodeld in Sources */,
+				D70165561BD7278100301942 /* CharacterDetailViewController.swift in Sources */,
 				D7A9D5921BD5D37E004F8C82 /* AppDelegate.swift in Sources */,
 				D742EAC11BD5E87D004455D3 /* Character.swift in Sources */,
 			);
