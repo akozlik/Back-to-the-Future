@@ -62,6 +62,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         UIApplication.sharedApplication().shortcutItems = shortcutItems
     }
     
+    func switchTimeTravelButtonLabel() {
+        var message = message1985;
+        if (buttonTimeTravel?.titleLabel?.text == message1985) {
+            message = message2015
+        }
+        
+        buttonTimeTravel?.setTitle(message, forState: UIControlState.Normal)
+    }
+
+    
     // MARK: IBAction Methods
     
     @IBAction func timeTravel(sender:UIButton) {

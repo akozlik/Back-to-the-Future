@@ -46,9 +46,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         
         if (shortcutItem.type == "com.codefortravel.backtothefuture.fluxcapacitor") {
-            NSLog("Inserting flux capacitor!")
+            let navVC = self.window?.rootViewController as? UINavigationController
+            let VCs = navVC?.viewControllers as [UIViewController]?
+            
+            if (VCs?.count > 0) {
+                let VC = VCs![0] as! ViewController
+                VC.switchTimeTravelButtonLabel()
+            }
         } else if (shortcutItem.type == "com.codefortravel.backtothefuture.character") {
-            NSLog("%@", shortcutItem.userInfo!)
+
         }
     }
 
