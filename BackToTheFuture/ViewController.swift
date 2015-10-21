@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerPreviewingDelegate {
     
     @IBOutlet weak var buttonTimeTravel : UIButton?
     @IBOutlet weak var tableView : UITableView?
@@ -23,12 +23,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (self.isForceTouchAvailable()) {
+            registerForPreviewingWithDelegate(self, sourceView: tableView!)
+        }
+        
         self.title = "BTTF"
         
         if (characters == nil) {
             characters = [Character]()
         }
         
+        // Set up a few characters
         let marty = Character.init(characterName: "Marty McFly", actorName: "Michael J Fox", actorHeadshotName: "michael")
         let doc = Character.init(characterName: "Doc Brown", actorName: "Christopher Lloyd", actorHeadshotName: "christopher")
         let lorraine = Character.init(characterName: "Lorraine Baines", actorName: "Lea Thompson", actorHeadshotName: "lea")
@@ -67,6 +72,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    // MARK: Peek / Pop Methods
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let indexPath = tableView?.indexPathForRowAtPoint(location)
+        let row = indexPath?.row
+        let character = characters[row!]
+        
+        let detailVC = storyboard?.instantiateViewControllerWithIdentifier("CharacterDetailViewController") as? CharacterDetailViewController
+        
+        detailVC?.character = character
+        detailVC?.preferredContentSize = CGSize(width: 0, height: 300)
+
+        return detailVC
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        showViewController(viewControllerToCommit, sender: self)
+    }
+    
     // MARK: UITableViewDelegate/DataSource Methods
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier")
@@ -85,6 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell!
     }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.performSegueWithIdentifier(kCharacterDetailSegue, sender: self)
