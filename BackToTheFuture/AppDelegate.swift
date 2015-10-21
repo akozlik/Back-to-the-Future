@@ -46,16 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         
         if (shortcutItem.type == "com.codefortravel.backtothefuture.fluxcapacitor") {
-            let navVC = self.window?.rootViewController as? UINavigationController
-            let VCs = navVC?.viewControllers as [UIViewController]?
-            
-            if (VCs?.count > 0) {
-                let VC = VCs![0] as! ViewController
-                VC.switchTimeTravelButtonLabel()
-            }
+            let VC = getRootController() as! ViewController
+            VC.switchTimeTravelButtonLabel()
         } else if (shortcutItem.type == "com.codefortravel.backtothefuture.character") {
+            let characterName = shortcutItem.userInfo!["characterName"] as? String
+            let VC = getRootController() as! ViewController
+            VC.loadDetailForCharacter(characterName!)
 
         }
+    }
+    
+    func getRootController() -> UIViewController? {
+        let navVC = self.window?.rootViewController as? UINavigationController
+        let VCs = navVC?.viewControllers as [UIViewController]?
+        
+        if (VCs?.count > 0) {
+            let VC = VCs![0] as! ViewController
+            return VC
+        }
+        
+        return nil
     }
 
     // MARK: - Core Data stack

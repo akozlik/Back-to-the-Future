@@ -70,6 +70,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         buttonTimeTravel?.setTitle(message, forState: UIControlState.Normal)
     }
+    
+    func loadDetailForCharacter(characterName : String) {
+        let filteredCharacters = characters.filter() {
+            $0.characterName == characterName
+        }
+        
+        if (filteredCharacters.count > 0) {
+            let character = filteredCharacters[0]
+            
+            let detailVC = storyboard?.instantiateViewControllerWithIdentifier("CharacterDetailViewController") as? CharacterDetailViewController
+            detailVC?.character = character
+            self.navigationController?.popToRootViewControllerAnimated(false)
+            self.showViewController(detailVC!, sender: self)
+        }
+    }
 
     
     // MARK: IBAction Methods
