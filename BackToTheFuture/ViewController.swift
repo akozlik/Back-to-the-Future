@@ -41,13 +41,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for character in characters! {
             let item = UIMutableApplicationShortcutItem(
                 type: "com.codefortravel.backtothefuture.character",
-                localizedTitle: character.characterName!,
+                localizedTitle: character.characterName,
                 localizedSubtitle: "Tap for more details",
                 icon: nil, // No icon
                 //                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
 //                icon: UIApplicationShortcutIcon(type: .Add), // Icon with a UIApplicationShortcutIconType
                 
-                userInfo: ["characterName" : character.characterName!]
+                userInfo: ["characterName" : character.characterName]
             )
             shortcutItems.append(item)
         }
@@ -148,9 +148,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell?.textLabel?.text = character.characterName
             cell?.detailTextLabel?.text = character.actorName
             
-            if (character.actorHeadshotName != nil) {
-                cell?.imageView?.image = UIImage(named:character.actorHeadshotName!)   
-            }
+            cell?.imageView?.image = UIImage(named:character.actorHeadshotName)
         }
         
         return cell!

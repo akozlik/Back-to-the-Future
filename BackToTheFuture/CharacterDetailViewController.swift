@@ -25,7 +25,7 @@ class CharacterDetailViewController : UIViewController {
         
         self.title = character.characterName
 
-        actorHeadshotImageView?.image = UIImage(named: character.actorHeadshotName!)
+        actorHeadshotImageView?.image = UIImage(named: character.actorHeadshotName)
         characterNameLabel?.text = character.characterName
         actorNameLabel?.text = character.actorName
     }
@@ -34,13 +34,13 @@ class CharacterDetailViewController : UIViewController {
     
     override func previewActionItems() -> [UIPreviewActionItem] {
         let alertAction = UIPreviewAction(title: "Say a Quote!", style: .Default) { (action, viewController) -> Void in
-            let alertController = UIAlertController(title: "Quote", message: self.character.quote!, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Quote", message: self.character.quote, preferredStyle: .Alert)
 
             let doneAction = UIAlertAction(title: "done", style: .Default, handler: nil)
             
             alertController.addAction(doneAction)
 //            self.presentViewController(alertController, animated: true, completion: nil)
-            NSLog("\(self.character.quote!)")
+            NSLog("\(self.character.quote)")
         };
         
         return [alertAction]
