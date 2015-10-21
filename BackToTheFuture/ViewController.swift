@@ -43,9 +43,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 type: "com.codefortravel.backtothefuture.character",
                 localizedTitle: character.characterName!,
                 localizedSubtitle: "Tap for more details",
-                //                icon: nil, // No icon
+                icon: nil, // No icon
                 //                icon: UIApplicationShortcutIcon(templateImageName: "flux-capacitor"), // Icon wtih a custom image
-                icon: UIApplicationShortcutIcon(type: .Add), // Icon with a UIApplicationShortcutIconType
+//                icon: UIApplicationShortcutIcon(type: .Add), // Icon with a UIApplicationShortcutIconType
                 
                 userInfo: ["characterName" : character.characterName!]
             )
@@ -56,6 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func loadCharacters() {
+        
         if (characters == nil) {
             characters = [Character]()
         }
@@ -142,7 +143,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier")
         
         if (cell != nil) {
-//            let character : Character = (characters?.[indexPath.row])! as! Character
             let character : Character = characters[indexPath.row]
             
             cell?.textLabel?.text = character.characterName
@@ -176,7 +176,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: Segue Methods
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == kCharacterDetailSegue) {
-            var detailVC = segue.destinationViewController as! CharacterDetailViewController
+            let detailVC = segue.destinationViewController as! CharacterDetailViewController
             
             let indexPath = tableView?.indexPathForSelectedRow
             let row = indexPath?.row
